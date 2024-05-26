@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const { connectToDb, getDb } = require("./db-service");
 const { ObjectId } = require("mongodb");
 
@@ -6,6 +7,12 @@ const { ObjectId } = require("mongodb");
 
 const app = express();
 app.use(express.json());
+
+const corsOptions = {
+  origin: "http://localhost:4200", // sau un array cu mai multe origini permise
+};
+
+app.use(cors(corsOptions));
 
 // db connection
 
